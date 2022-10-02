@@ -6,10 +6,6 @@ const contriesContainer = document.createElement("div");
 contriesContainer.setAttribute("id", "countries");
 body.append(contriesContainer);
 
-// const btn = document.createElement("button");
-// btn.setAttribute("id", "btn-country");
-// contriesContainer.append(btn);
-
 //make an function to make it possible to get information of multiple countries
 const getCountryData = function(country){
 
@@ -19,17 +15,14 @@ request.open('GET',`https://restcountries.com/v3.1/name/${country}`);
 //open the request(above),(down) send request.asyncronys- don´t work to put it in a variable. sen fecthes the event and load is waiting for it to load
 request.send();
 
-
 //callback function. (get data i JSON)
 request.addEventListener('load', function(){
 // console.log(this.responseText);
 });
 
-//use [] round data to desctruct to get to the object. same as .[0]
 request.addEventListener('load', function(){
     const [data] = JSON.parse(this.responseText);
     console.log(data);
-
 
     const html = `
     <article class="country">
